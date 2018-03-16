@@ -1,0 +1,37 @@
+#ifdef notdef
+fd = socket(PF_INET6, SOCK_RAW, IPPROTO_ICMPV6);
+
+
+SO_SNDBUF to 10240
+
+use sendmsg
+  struct msghdr {
+      void      *msg_name;        /* ptr to socket address structure */
+      socklen_t  msg_namelen;     /* size of socket address structure */
+      struct iovec  *msg_iov;     /* scatter/gather array */
+      size_t     msg_iovlen;      /* # elements in msg_iov */
+      void      *msg_control;     /* ancillary data */
+      socklen_t  msg_controllen;  /* ancillary data buffer length */
+      int        msg_flags;       /* flags on received message */
+    };
+
+ancillary:
+
+struct cmsghdr {
+      socklen_t  cmsg_len;   /* #bytes, including this header */
+      int        cmsg_level; /* originating protocol */
+      int        cmsg_type;  /* protocol-specific type */
+                 /* followed by unsigned char cmsg_data[]; */
+    };
+
+outgoing interface is an index, see rfc2133.
+
+don't use bind, use auxilary information to specify stuff.
+
+"   The kernel must verify that the requested source address is indeed a
+   unicast address assigned to the node."
+No!
+
+Unify the hop limit of outgoing packets
+#endif
+

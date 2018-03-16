@@ -1,0 +1,9 @@
+
+make && sudo ./aw bge0 dc0 fd43:4845:5300::/48 2620:0000:0f0e::/48 || echo $?
+
+exit 13
+
+
+# make && ./aw fd72:6574:6e65:7400::1 2001:470:e17f:1::99/63
+route add -inet6 fd72:6574:6e65:7400::0/48 -interface tun0
+ifconfig tun0 inet6 fd72:6574:6e65:7400::2/48

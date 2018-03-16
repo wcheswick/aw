@@ -1,0 +1,1 @@
+make && sudo ./ping6 -c 1 python.org

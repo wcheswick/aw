@@ -1,0 +1,10 @@
+aw does its own gatewaying, so (in FreeBSD) /etc/rc.conf
+
+ipv6_gateway_enable="NO"	# this is the default anyway
+
+It relies on the routing tables already configured in the gateway host.
+Typically, the gateway will be a host on the internal network, or will
+have a route to it.  The default route points to the router handling the
+Internet traffic.  Rather than the default route, BGP could be used to
+load in the currently announced routes, and the gateway machine can
+route to several pipes.
